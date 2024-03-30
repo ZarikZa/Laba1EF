@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище Laba1ModelContainer" CdmEntityContainer="Laba1Entities">
+    <EntitySetMapping Name="Clients">
+      <EntityTypeMapping TypeName="Laba1Model.Clients">
+        <MappingFragment StoreEntitySet="Clients">
+          <ScalarProperty Name="ID_Client" ColumnName="ID_Client" />
+          <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+          <ScalarProperty Name="ClientSurname" ColumnName="ClientSurname" />
+          <ScalarProperty Name="ClientMiddleName" ColumnName="ClientMiddleName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="Laba1Model.Orders">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="ID_Order" ColumnName="ID_Order" />
+          <ScalarProperty Name="FK_Client" ColumnName="FK_Client" />
+          <ScalarProperty Name="FK_Unitaz" ColumnName="FK_Unitaz" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Unitazs">
+      <EntityTypeMapping TypeName="Laba1Model.Unitazs">
+        <MappingFragment StoreEntitySet="Unitazs">
+          <ScalarProperty Name="ID_Unitaz" ColumnName="ID_Unitaz" />
+          <ScalarProperty Name="UnitaziName" ColumnName="UnitaziName" />
+          <ScalarProperty Name="FK_UnitazType" ColumnName="FK_UnitazType" />
+          <ScalarProperty Name="UnitazPrice" ColumnName="UnitazPrice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UnitazTypes">
+      <EntityTypeMapping TypeName="Laba1Model.UnitazTypes">
+        <MappingFragment StoreEntitySet="UnitazTypes">
+          <ScalarProperty Name="ID_UnitazTypes" ColumnName="ID_UnitazTypes" />
+          <ScalarProperty Name="UnitazType" ColumnName="UnitazType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

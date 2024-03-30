@@ -1,0 +1,259 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище Laba1Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Clients">
+          <Key>
+            <PropertyRef Name="ID_Client" />
+          </Key>
+          <Property Name="ID_Client" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientName" Type="varchar" MaxLength="40" />
+          <Property Name="ClientSurname" Type="varchar" MaxLength="40" />
+          <Property Name="ClientMiddleName" Type="varchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="ID_Order" />
+          </Key>
+          <Property Name="ID_Order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_Client" Type="int" Nullable="false" />
+          <Property Name="FK_Unitaz" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Unitazs">
+          <Key>
+            <PropertyRef Name="ID_Unitaz" />
+          </Key>
+          <Property Name="ID_Unitaz" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UnitaziName" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="FK_UnitazType" Type="int" Nullable="false" />
+          <Property Name="UnitazPrice" Type="decimal" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="UnitazTypes">
+          <Key>
+            <PropertyRef Name="ID_UnitazTypes" />
+          </Key>
+          <Property Name="ID_UnitazTypes" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UnitazType" Type="varchar" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Orders__FK_Clien__52593CB8">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="ID_Client" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="FK_Client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders__FK_Unita__534D60F1">
+          <End Role="Unitazs" Type="Self.Unitazs" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unitazs">
+              <PropertyRef Name="ID_Unitaz" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="FK_Unitaz" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Unitazs__FK_Unit__4F7CD00D">
+          <End Role="UnitazTypes" Type="Self.UnitazTypes" Multiplicity="1" />
+          <End Role="Unitazs" Type="Self.Unitazs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnitazTypes">
+              <PropertyRef Name="ID_UnitazTypes" />
+            </Principal>
+            <Dependent Role="Unitazs">
+              <PropertyRef Name="FK_UnitazType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище Laba1ModelContainer">
+          <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Unitazs" EntityType="Self.Unitazs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UnitazTypes" EntityType="Self.UnitazTypes" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Orders__FK_Clien__52593CB8" Association="Self.FK__Orders__FK_Clien__52593CB8">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders__FK_Unita__534D60F1" Association="Self.FK__Orders__FK_Unita__534D60F1">
+            <End Role="Unitazs" EntitySet="Unitazs" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Unitazs__FK_Unit__4F7CD00D" Association="Self.FK__Unitazs__FK_Unit__4F7CD00D">
+            <End Role="UnitazTypes" EntitySet="UnitazTypes" />
+            <End Role="Unitazs" EntitySet="Unitazs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Laba1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Clients">
+          <Key>
+            <PropertyRef Name="ID_Client" />
+          </Key>
+          <Property Name="ID_Client" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientName" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="ClientSurname" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="ClientMiddleName" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__FK_Clien__52593CB8" FromRole="Clients" ToRole="Orders" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="ID_Order" />
+          </Key>
+          <Property Name="ID_Order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_Client" Type="Int32" Nullable="false" />
+          <Property Name="FK_Unitaz" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Clients" Relationship="Self.FK__Orders__FK_Clien__52593CB8" FromRole="Orders" ToRole="Clients" />
+          <NavigationProperty Name="Unitazs" Relationship="Self.FK__Orders__FK_Unita__534D60F1" FromRole="Orders" ToRole="Unitazs" />
+        </EntityType>
+        <EntityType Name="Unitazs">
+          <Key>
+            <PropertyRef Name="ID_Unitaz" />
+          </Key>
+          <Property Name="ID_Unitaz" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UnitaziName" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FK_UnitazType" Type="Int32" Nullable="false" />
+          <Property Name="UnitazPrice" Type="Decimal" Precision="10" Scale="2" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__FK_Unita__534D60F1" FromRole="Unitazs" ToRole="Orders" />
+          <NavigationProperty Name="UnitazTypes" Relationship="Self.FK__Unitazs__FK_Unit__4F7CD00D" FromRole="Unitazs" ToRole="UnitazTypes" />
+        </EntityType>
+        <EntityType Name="UnitazTypes">
+          <Key>
+            <PropertyRef Name="ID_UnitazTypes" />
+          </Key>
+          <Property Name="ID_UnitazTypes" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UnitazType" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Unitazs" Relationship="Self.FK__Unitazs__FK_Unit__4F7CD00D" FromRole="UnitazTypes" ToRole="Unitazs" />
+        </EntityType>
+        <Association Name="FK__Orders__FK_Clien__52593CB8">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="ID_Client" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="FK_Client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders__FK_Unita__534D60F1">
+          <End Role="Unitazs" Type="Self.Unitazs" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unitazs">
+              <PropertyRef Name="ID_Unitaz" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="FK_Unitaz" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Unitazs__FK_Unit__4F7CD00D">
+          <End Role="UnitazTypes" Type="Self.UnitazTypes" Multiplicity="1" />
+          <End Role="Unitazs" Type="Self.Unitazs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnitazTypes">
+              <PropertyRef Name="ID_UnitazTypes" />
+            </Principal>
+            <Dependent Role="Unitazs">
+              <PropertyRef Name="FK_UnitazType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Laba1Entities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Clients" EntityType="Self.Clients" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" />
+          <EntitySet Name="Unitazs" EntityType="Self.Unitazs" />
+          <EntitySet Name="UnitazTypes" EntityType="Self.UnitazTypes" />
+          <AssociationSet Name="FK__Orders__FK_Clien__52593CB8" Association="Self.FK__Orders__FK_Clien__52593CB8">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders__FK_Unita__534D60F1" Association="Self.FK__Orders__FK_Unita__534D60F1">
+            <End Role="Unitazs" EntitySet="Unitazs" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Unitazs__FK_Unit__4F7CD00D" Association="Self.FK__Unitazs__FK_Unit__4F7CD00D">
+            <End Role="UnitazTypes" EntitySet="UnitazTypes" />
+            <End Role="Unitazs" EntitySet="Unitazs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище Laba1ModelContainer" CdmEntityContainer="Laba1Entities1">
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="Laba1Model.Clients">
+              <MappingFragment StoreEntitySet="Clients">
+                <ScalarProperty Name="ID_Client" ColumnName="ID_Client" />
+                <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+                <ScalarProperty Name="ClientSurname" ColumnName="ClientSurname" />
+                <ScalarProperty Name="ClientMiddleName" ColumnName="ClientMiddleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="Laba1Model.Orders">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="ID_Order" ColumnName="ID_Order" />
+                <ScalarProperty Name="FK_Client" ColumnName="FK_Client" />
+                <ScalarProperty Name="FK_Unitaz" ColumnName="FK_Unitaz" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Unitazs">
+            <EntityTypeMapping TypeName="Laba1Model.Unitazs">
+              <MappingFragment StoreEntitySet="Unitazs">
+                <ScalarProperty Name="ID_Unitaz" ColumnName="ID_Unitaz" />
+                <ScalarProperty Name="UnitaziName" ColumnName="UnitaziName" />
+                <ScalarProperty Name="FK_UnitazType" ColumnName="FK_UnitazType" />
+                <ScalarProperty Name="UnitazPrice" ColumnName="UnitazPrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UnitazTypes">
+            <EntityTypeMapping TypeName="Laba1Model.UnitazTypes">
+              <MappingFragment StoreEntitySet="UnitazTypes">
+                <ScalarProperty Name="ID_UnitazTypes" ColumnName="ID_UnitazTypes" />
+                <ScalarProperty Name="UnitazType" ColumnName="UnitazType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c545b5acf93c4097b6f7aa9303f7f140" Name="Diagram1">
+        <EntityTypeShape EntityType="Laba1Model.Clients" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Laba1Model.Orders" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Laba1Model.Unitazs" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Laba1Model.UnitazTypes" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <AssociationConnector Association="Laba1Model.FK__Orders__FK_Clien__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="Laba1Model.FK__Orders__FK_Unita__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="Laba1Model.FK__Unitazs__FK_Unit__4F7CD00D" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
