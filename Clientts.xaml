@@ -9,6 +9,29 @@
       Title="Clientts">
 
     <Grid>
-        <DataGrid x:Name="datygridy"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition/>
+            <RowDefinition  Height="0.1*"/>
+            <RowDefinition  Height="0.1*"/>
+            <RowDefinition  Height="0.1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0.5*"/>
+        </Grid.ColumnDefinitions>
+        <DataGrid x:Name="datygridy" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" SelectionChanged="datygridy_SelectionChanged"/>
+        <TextBlock Text="Имя:" FontSize="15px" VerticalAlignment="Center" Grid.Row="2" Grid.Column="1"/>
+        <TextBlock Text="Фамилия:" FontSize="15px" VerticalAlignment="Center" Grid.Row="2" Grid.Column="2"/>
+        <TextBlock Text="Отчество:" FontSize="15px" VerticalAlignment="Center" Grid.Row="2" Grid.Column="3"/>
+        <TextBox x:Name="NameTbox" Grid.Row="3" Grid.Column="1"/>
+        <TextBox x:Name="SurnameTbox" Grid.Row="3" Grid.Column="2"/>
+        <TextBox x:Name="MiddleNameTbox" Grid.Row="3" Grid.Column="3"/>
+        <Button x:Name="DeleteBtm" Content="Удалить" Grid.Column="0" Grid.Row="4" Click="DeleteBtm_Click"/>
+        <Button x:Name="AddBtm" Content="Добавить" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="3" Click="AddBtm_Click"/>
+        <Button x:Name="EditBtm" Content="Изменить" Grid.Column="4" Grid.Row="4" Click="EditBtm_Click"/>
     </Grid>
 </Page>

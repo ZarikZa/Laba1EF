@@ -1,6 +1,4 @@
 C:\Users\MSI-MODERN-14\source\repos\LabaBA1\LabaBA1\obj\Debug\LabaBA1.csproj.AssemblyReference.cache
-C:\Users\MSI-MODERN-14\source\repos\LabaBA1\LabaBA1\obj\Debug\MainWindow.g.cs
-C:\Users\MSI-MODERN-14\source\repos\LabaBA1\LabaBA1\obj\Debug\Unitaz.g.cs
 C:\Users\MSI-MODERN-14\source\repos\LabaBA1\LabaBA1\obj\Debug\App.g.cs
 C:\Users\MSI-MODERN-14\source\repos\LabaBA1\LabaBA1\obj\Debug\LabaBA1_Content.g.cs
 C:\Users\MSI-MODERN-14\source\repos\LabaBA1\LabaBA1\obj\Debug\LabaBA1_MarkupCompile.cache
@@ -23,8 +21,6 @@ C:\Users\MSI-MODERN-14\source\repos\LabaBA1\LabaBA1\bin\Debug\Microsoft.Xaml.Beh
 C:\Users\MSI-MODERN-14\source\repos\LabaBA1\LabaBA1\bin\Debug\ru\EntityFramework.resources.dll
 C:\Users\MSI-MODERN-14\source\repos\LabaBA1\LabaBA1\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
 C:\Users\MSI-MODERN-14\source\repos\LabaBA1\LabaBA1\obj\Debug\App.baml
-C:\Users\MSI-MODERN-14\source\repos\LabaBA1\LabaBA1\obj\Debug\MainWindow.baml
-C:\Users\MSI-MODERN-14\source\repos\LabaBA1\LabaBA1\obj\Debug\Unitaz.baml
 C:\Users\MSI-MODERN-14\source\repos\LabaBA1\LabaBA1\obj\Debug\LabaBA1.g.resources
 C:\Users\MSI-MODERN-14\source\repos\LabaBA1\LabaBA1\obj\Debug\LabaBA1.Properties.Resources.resources
 C:\Users\MSI-MODERN-14\source\repos\LabaBA1\LabaBA1\obj\Debug\LabaBA1.csproj.GenerateResource.cache
@@ -33,8 +29,12 @@ C:\Users\MSI-MODERN-14\source\repos\LabaBA1\LabaBA1\obj\Debug\LabaBA1.csproj.Up2
 C:\Users\MSI-MODERN-14\source\repos\LabaBA1\LabaBA1\obj\Debug\LabaBA1.exe
 C:\Users\MSI-MODERN-14\source\repos\LabaBA1\LabaBA1\obj\Debug\LabaBA1.pdb
 C:\Users\MSI-MODERN-14\source\repos\LabaBA1\LabaBA1\obj\Debug\Clientts.g.cs
-C:\Users\MSI-MODERN-14\source\repos\LabaBA1\LabaBA1\obj\Debug\Clientts.baml
+C:\Users\MSI-MODERN-14\source\repos\LabaBA1\LabaBA1\obj\Debug\MainWindow.g.cs
 C:\Users\MSI-MODERN-14\source\repos\LabaBA1\LabaBA1\obj\Debug\Orrders.g.cs
+C:\Users\MSI-MODERN-14\source\repos\LabaBA1\LabaBA1\obj\Debug\Unitaz.g.cs
 C:\Users\MSI-MODERN-14\source\repos\LabaBA1\LabaBA1\obj\Debug\UnitazasTypes.g.cs
+C:\Users\MSI-MODERN-14\source\repos\LabaBA1\LabaBA1\obj\Debug\Clientts.baml
+C:\Users\MSI-MODERN-14\source\repos\LabaBA1\LabaBA1\obj\Debug\MainWindow.baml
 C:\Users\MSI-MODERN-14\source\repos\LabaBA1\LabaBA1\obj\Debug\Orrders.baml
+C:\Users\MSI-MODERN-14\source\repos\LabaBA1\LabaBA1\obj\Debug\Unitaz.baml
 C:\Users\MSI-MODERN-14\source\repos\LabaBA1\LabaBA1\obj\Debug\UnitazasTypes.baml
