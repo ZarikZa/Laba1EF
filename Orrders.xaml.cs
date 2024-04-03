@@ -26,67 +26,27 @@ namespace LabaBA1
             InitializeComponent();
             datygridy.IsReadOnly = true;
             datygridy.ItemsSource = Laba1Entities1.Orders.ToList();
-        }
-        private void DeleteBtm_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                Laba1Entities1.Orders.Remove(datygridy.SelectedItem as Orders);
-                Laba1Entities1.SaveChanges();
-                datygridy.ItemsSource =  Laba1Entities1.Orders.ToList();
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Нельзя удалить, соrrи");
-            }
+            FiltrCbox.ItemsSource = Laba1Entities1.Orders.ToList();
+            FiltrCbox.DisplayMemberPath = "FK_Client";
         }
 
-        private void AddBtm_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (ID_ClientTbox.Text != "")
+            datygridy.ItemsSource = Laba1Entities1.Orders.ToList().Where(item => Convert.ToString(item.FK_Client).Contains(SearchTbox.Text));
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (FiltrCbox.SelectedItem != null)
             {
-                try
-                {
-                    Orders orders = new Orders();
-                    orders.FK_Client = Convert.ToInt32(ID_ClientTbox.Text);
-                    orders.FK_Unitaz = Convert.ToInt32(ID_UnitazTbox.Text);
-                    Laba1Entities1.Orders.Add(orders);
-                    Laba1Entities1.SaveChanges();
-                    datygridy.ItemsSource =  Laba1Entities1.Orders.ToList();
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Указан неверный ID");
-                }
+                var selected = FiltrCbox.SelectedItem as Orders;
+                datygridy.ItemsSource = Laba1Entities1.Orders.ToList().Where(item => item.FK_Client == selected.FK_Client);
             }
         }
 
-        private void datygridy_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ClearBtm_Click(object sender, RoutedEventArgs e)
         {
-            var cheged = datygridy.SelectedItem as Orders ?? new Orders();
-
-            ID_ClientTbox.Text = Convert.ToString(cheged.FK_Client);
-            ID_UnitazTbox.Text = Convert.ToString(cheged.FK_Unitaz);
-        }
-
-        private void EditBtm_Click(object sender, RoutedEventArgs e)
-        {
-            if (ID_ClientTbox.Text != "")
-            {
-                try
-                {
-                    var selected = datygridy.SelectedItem as Orders;
-                    selected.FK_Client = Convert.ToInt32(ID_ClientTbox.Text);
-                    selected.FK_Unitaz = Convert.ToInt32(ID_UnitazTbox.Text);
-
-                    Laba1Entities1.SaveChanges();
-                    datygridy.ItemsSource =  Laba1Entities1.Orders.ToList();
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Такое имя уже существует");
-                }
-            }
+            datygridy.ItemsSource = Laba1Entities1.Orders.ToList();
         }
     }
 }

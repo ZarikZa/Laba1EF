@@ -26,72 +26,27 @@ namespace LabaBA1
             InitializeComponent();
             datygridy.IsReadOnly = true;
             datygridy.ItemsSource = Laba1Entities1.Unitazs.ToList();
+            FiltrCbox.ItemsSource = Laba1Entities1.Unitazs.ToList();
+            FiltrCbox.DisplayMemberPath = "UnitaziName";
+        }
+        
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            datygridy.ItemsSource = Laba1Entities1.Unitazs.ToList().Where(item => item.UnitaziName.Contains(SearchTbox.Text));
         }
 
-        private void DeleteBtm_Click(object sender, RoutedEventArgs e)
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            try
+            if(FiltrCbox.SelectedItem != null)
             {
-                Laba1Entities1.Unitazs.Remove(datygridy.SelectedItem as Unitazs);
-                Laba1Entities1.SaveChanges();
-                datygridy.ItemsSource =  Laba1Entities1.Unitazs.ToList();
-
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Нельзя удалить, соrrи");
-            }
-        }
-
-        private void AddBtm_Click(object sender, RoutedEventArgs e)
-        {
-            if(Nazvanie.Text != "")
-            {
-                try
-                {
-                    Unitazs unitazTypes = new  Unitazs();
-                    unitazTypes.UnitaziName = Nazvanie.Text;
-                    unitazTypes.FK_UnitazType = Convert.ToInt32(TypeTbox.Text);
-                    unitazTypes.UnitazPrice = Convert.ToDecimal(PriceTbox.Text);
-                    Laba1Entities1.Unitazs.Add(unitazTypes);
-                    Laba1Entities1.SaveChanges();
-                    datygridy.ItemsSource =  Laba1Entities1.Unitazs.ToList();
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Такое имя уже существует или же указан неверный ID");
-                }
+                var selected = FiltrCbox.SelectedItem as Unitazs;
+                datygridy.ItemsSource = Laba1Entities1.Unitazs.ToList().Where(item => item.UnitaziName == selected.UnitaziName);
             }
         }
 
-        private void datygridy_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ClearBtm_Click(object sender, RoutedEventArgs e)
         {
-            var cheged = datygridy.SelectedItem as Unitazs ?? new Unitazs();
-
-            Nazvanie.Text = cheged.UnitaziName;
-            TypeTbox.Text = Convert.ToString(cheged.FK_UnitazType);
-            PriceTbox.Text = Convert.ToString(cheged.UnitazPrice);
-        }
-
-        private void EditBtm_Click(object sender, RoutedEventArgs e)
-        {
-            if(Nazvanie.Text != "")
-            {
-                try
-                {
-                    var selected = datygridy.SelectedItem as Unitazs;
-                    selected.UnitaziName = Nazvanie.Text;
-                    selected.FK_UnitazType = Convert.ToInt32(TypeTbox.Text);
-                    selected.UnitazPrice = Convert.ToDecimal(PriceTbox.Text);
-
-                    Laba1Entities1.SaveChanges();
-                    datygridy.ItemsSource =  Laba1Entities1.Unitazs.ToList();
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Такое имя уже существует");
-                }
-            }
+            datygridy.ItemsSource = Laba1Entities1.Unitazs.ToList();
         }
     }
 }

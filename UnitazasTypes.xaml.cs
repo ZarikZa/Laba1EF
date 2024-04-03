@@ -26,66 +26,27 @@ namespace LabaBA1
             InitializeComponent();
             datygridy.IsReadOnly = true;
             datygridy.ItemsSource = Laba1Entities1.UnitazTypes.ToList();
+            FiltrCbox.ItemsSource = Laba1Entities1.UnitazTypes.ToList();
+            FiltrCbox.DisplayMemberPath = "UnitazType";
         }
 
-        private void DeleteBtm_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                Laba1Entities1.UnitazTypes.Remove(datygridy.SelectedItem as UnitazTypes);
-                Laba1Entities1.SaveChanges();
-                datygridy.ItemsSource =  Laba1Entities1.UnitazTypes.ToList();
-
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Нельзя удалить, соrrи");
-            }
+            datygridy.ItemsSource = Laba1Entities1.UnitazTypes.ToList().Where(item => item.UnitazType.Contains(SearchTbox.Text));
         }
 
-        private void AddBtm_Click(object sender, RoutedEventArgs e)
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(Nazvanie.Text != "")
+            if (FiltrCbox.SelectedItem != null)
             {
-                try
-                {
-                    UnitazTypes unitazTypes = new UnitazTypes();
-                    unitazTypes.UnitazType = Nazvanie.Text;
-
-                    Laba1Entities1.UnitazTypes.Add(unitazTypes);
-                    Laba1Entities1.SaveChanges();
-                    datygridy.ItemsSource =  Laba1Entities1.UnitazTypes.ToList();
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Такое имя уже существует");
-                }
+                var selected = FiltrCbox.SelectedItem as UnitazTypes;
+                datygridy.ItemsSource = Laba1Entities1.UnitazTypes.ToList().Where(item => item.UnitazType == selected.UnitazType);
             }
         }
 
-        private void datygridy_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ClearBtm_Click(object sender, RoutedEventArgs e)
         {
-            var cheged = datygridy.SelectedItem as UnitazTypes ?? new UnitazTypes();
-            Nazvanie.Text = cheged.UnitazType;
-        }
-
-        private void EditBtm_Click(object sender, RoutedEventArgs e)
-        {
-            if(Nazvanie.Text != "")
-            {
-                try
-                {
-                    var selected = datygridy.SelectedItem as UnitazTypes;
-                    selected.UnitazType = Nazvanie.Text;
-
-                    Laba1Entities1.SaveChanges();
-                    datygridy.ItemsSource =  Laba1Entities1.UnitazTypes.ToList();
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Такое имя уже существует");
-                }
-            }
+            datygridy.ItemsSource = Laba1Entities1.UnitazTypes.ToList();
         }
     }
 }
